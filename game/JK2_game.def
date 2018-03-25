@@ -1,0 +1,8 @@
+EXPORTS
+	dllEntry
+	vmMain
+	LmdApi_Get_Memory
+	LmdApi_Get_Accounts
+	LmdApi_Get_Professions
+	LmdApi_Get_Entities
+	LmdApi_Get_Commands_Auths
