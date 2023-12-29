@@ -657,11 +657,12 @@ qboolean Force_TeamHeal_Start(gentity_t *self, const void *vData) {
 
 forceTeamHeal_t Force_TeamHeal_Levels[5] = {
 	//Ufo: fixed forcepower of level 5
-	{256,		50,		33, 25, 2000, 50},
-	{256 * 1.5,	50,		33,	25, 2000, 33},
-	{256 * 2,	50,		33,	25, 2000, 25},
-	{256 * 3,	50,		33,	25, 2000, 25},
-	{256 * 3,	100,	66, 50, 2000, 50},
+	//Creator: Updated Values - For Linux Build.
+	{256,  50, 33, 25, 2000, 50},
+	{384,  50, 33, 25, 2000, 33},
+	{512,  50, 33, 25, 2000, 25},
+	{768,  50, 33, 25, 2000, 25},
+	{768, 100, 66, 50, 2000, 50},
 };
 
 forcePower_t Force_TeamHeal = {

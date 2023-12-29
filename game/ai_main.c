@@ -7190,7 +7190,7 @@ void StandardBotAI(bot_state_t *bs, float thinktime)
 			else if ((bs->cur_ps.fd.forcePowersKnown 
 				& (1 << FP_LIGHTNING)) 
 				&& bs->frame_Enemy_Len 
-				< FORCE_LIGHTNING_RADIUS 
+				< FORCE_LIGHTNING_RADIUS_LV3 //Creator: Updated Macro - For Linux Build. 
 				&& level.clients[bs->client].ps.fd.forcePower 
 				> 50 
 				&& InFieldOfVision(bs->viewangles, 50, a_fo)
@@ -7208,7 +7208,7 @@ void StandardBotAI(bot_state_t *bs, float thinktime)
 			else if ((bs->cur_ps.fd.forcePowersKnown 
 				& (1 << FP_GRIP)) 
 				&& bs->frame_Enemy_Len 
-				< MAX_GRIP_DISTANCE 
+				< MAX_GRIP_DISTANCE_LV3 //Creator: Updated Macro - For Linux Build. 
 				&& level.clients[bs->client].ps.fd.forcePower 
 				> forcePowerNeeded[level.clients[bs->client].ps.fd.forcePowerLevel[FP_GRIP]][FP_GRIP] 
 			&& InFieldOfVision(bs->viewangles, 50, a_fo)

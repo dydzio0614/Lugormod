@@ -119,8 +119,10 @@ unsigned int Group_Count(char *name, qboolean saveable) {
 
 unsigned int Group_Center(char *name, qboolean saveable, vec3_t center, qboolean floorOrigin) {
 	int lowest = INT_MAX;
-
-	vec3_t mins = {INT_MAX, INT_MAX, INT_MAX}, maxs = {-INT_MAX, -INT_MAX, -INT_MAX};
+	
+	//Creator: Fixed Type Conversion - For Linux Build.
+	vec3_t mins = {(float)INT_MAX, (float)INT_MAX, (float)INT_MAX},
+		maxs = {(float)-INT_MAX, (float)-INT_MAX, (float)-INT_MAX};
 	int i;
 
 	unsigned int count = 0;

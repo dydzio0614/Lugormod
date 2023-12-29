@@ -546,11 +546,12 @@ void Force_Lightning_Stop(gentity_t *self, const void* vData) {
 
 forceLightning_t Force_Lightning_Levels[5] = {
 	//Ufo: fixed radius of level 2
-	{2048,				0, 0,		3000, 1, qfalse},
-	{2048,				0, Q3_INFINITE,	1500, 1, qfalse},
-	{FORCE_LIGHTNING_RADIUS,	1, Q3_INFINITE,	1500, 1, qtrue},
-	{FORCE_LIGHTNING_RADIUS * 1.5,	1, Q3_INFINITE,	1500, 1, qtrue},
-	{FORCE_LIGHTNING_RADIUS * 2,	1, Q3_INFINITE,	1500, 1, qtrue}
+	//Creator: Updated Macros - For Linux Build.
+	{FORCE_LIGHTNING_RADIUS_LV1, 0, 		  0, 3000, 1, qfalse},
+	{FORCE_LIGHTNING_RADIUS_LV2, 0, Q3_INFINITE, 1500, 1, qfalse},
+	{FORCE_LIGHTNING_RADIUS_LV3, 1, Q3_INFINITE, 1500, 1, qtrue},
+	{FORCE_LIGHTNING_RADIUS_LV4, 1, Q3_INFINITE, 1500, 1, qtrue},
+	{FORCE_LIGHTNING_RADIUS_LV5, 1, Q3_INFINITE, 1500, 1, qtrue}
 };
 
 forcePower_t Force_Lightning = {
@@ -742,11 +743,12 @@ qboolean Force_TeamReplenish_Start(gentity_t *self, const void *vData) {
 
 forceTeamReplenish_t Force_TeamReplenish_Levels[5] = {
 	//Ufo: fixed forcepower of level 5
-	{256,		50,	33, 25, 2000, 50},
-	{256 * 1.5,	50,	33, 25, 2000, 33},
-	{256 * 2,	50,	33, 25, 2000, 25},
-	{256 * 3,	50,	33, 25, 2000, 25},
-	{256 * 3,	100,	66, 50, 2000, 50},
+	//Creator: Fixed Values - For Linux Build.
+	{256,  50, 33, 25, 2000, 50},
+	{384,  50, 33, 25, 2000, 33},
+	{512,  50, 33, 25, 2000, 25},
+	{768,  50, 33, 25, 2000, 25},
+	{768, 100, 66, 50, 2000, 50},
 };
 
 forcePower_t Force_TeamReplenish = {
