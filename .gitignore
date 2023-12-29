@@ -237,3 +237,9 @@ $RECYCLE.BIN/
 *.txt
 *.rar
 *.opendb
+
+#############
+## Unix
+#############
+*.o
+*.so

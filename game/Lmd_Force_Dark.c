@@ -288,11 +288,12 @@ void Force_Grip_Stop(gentity_t *self, const void *vData) {
 
 forceGrip_t Force_Grip_Levels[5] = {
 	//Ufo: fixed omni of level 3
-	{MAX_GRIP_DISTANCE,	2, 0,	5000, 0, GRIP_DRAIN_AMOUNT, 1, qfalse,	qfalse},
-	{MAX_GRIP_DISTANCE,	2, 20,	4000, 1, GRIP_DRAIN_AMOUNT, 1, qtrue,	qfalse},
-	{MAX_GRIP_DISTANCE,	2, 40,	4000, 2, GRIP_DRAIN_AMOUNT, 1, qtrue,	qtrue},
-	{MAX_GRIP_DISTANCE * 2,	2, 40,	4000, 2, GRIP_DRAIN_AMOUNT, 1, qtrue,	qtrue},
-	{MAX_GRIP_DISTANCE * 4,	2, 40,	4000, 2, GRIP_DRAIN_AMOUNT, 1, qtrue,	qtrue},
+	//Creator: Updated Macros - Properly.
+	{MAX_GRIP_DISTANCE_LV1,	2,  0, 5000, 0, GRIP_DRAIN_AMOUNT, 1, qfalse,	qfalse},
+	{MAX_GRIP_DISTANCE_LV2,	2, 20, 4000, 1, GRIP_DRAIN_AMOUNT, 1, qtrue,	qfalse},
+	{MAX_GRIP_DISTANCE_LV3,	2, 40, 4000, 2, GRIP_DRAIN_AMOUNT, 1, qtrue,	qtrue},
+	{MAX_GRIP_DISTANCE_LV4,	2, 40, 4000, 2, GRIP_DRAIN_AMOUNT, 1, qtrue,	qtrue},
+	{MAX_GRIP_DISTANCE_LV5,	2, 40, 4000, 2, GRIP_DRAIN_AMOUNT, 1, qtrue,	qtrue},
 };
 
 forcePower_t Force_Grip = {
