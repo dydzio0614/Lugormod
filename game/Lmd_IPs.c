@@ -458,7 +458,7 @@ void Cmd_FindIP_f(gentity_t *ent, int iArg) {
 			Cmd_FindIP_FindName(ent, arg);
 	}
 	else
-		Disp(ent, CT_B"Usage: /findip "CT_AR"<ip or partial name>");
+		Disp(ent, CT_B"Usage: /findip " CT_AR"<ip or partial name>");
 }
 
 void Cmd_ListIPs_f(gentity_t *ent, int iArg) {

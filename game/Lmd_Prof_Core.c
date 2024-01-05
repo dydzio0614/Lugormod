@@ -996,8 +996,8 @@ void Cmd_BuyLevel_f(gentity_t *ent, int iArg){
 	}
 
 	Disp(ent, va(
-		CT_B"The next level costs "CT_V"%i"CT_B" credits.  Leveling up will leave you with "CT_V"%i"CT_B" credits.\n"
-		"Use \'"CT_C"BuyLevel confirm"CT_B"\' to level up .",
+		CT_B"The next level costs " CT_V"%i" CT_B" credits.  Leveling up will leave you with " CT_V"%i" CT_B" credits.\n"
+		"Use \'" CT_C"BuyLevel confirm" CT_B"\' to level up .",
 		cost,
 		resCr));
 }

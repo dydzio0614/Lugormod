@@ -65,11 +65,7 @@ void Cmd_Bounds_f (gentity_t *ent, int iArg) {
 	if (targ)
 	{
 		const int lineTime = 3000;
-		Disp(ent, va(
-				CT_B"Mins: "CT_V"%s\n"
-				CT_B"Maxs: "CT_V"%s",
-				vtos2(targ->r.mins),
-				vtos2(targ->r.maxs)));
+		Disp(ent, va(CT_B"Mins: " CT_V"%s\n" CT_B"Maxs: " CT_V"%s", vtos2(targ->r.mins), vtos2(targ->r.maxs)));
 		Disp(ent, va("^3Contents: ^2%x ^3Clipmask: ^2%x", ent->r.contents, ent->clipmask));
 
 		vec3_t ofs;
@@ -130,11 +126,7 @@ void Cmd_Bounds_f (gentity_t *ent, int iArg) {
 	else if (arg[0]) {
 		int configIndex = G_FindConfigstringIndex (arg, CS_MODELS, MAX_MODELS, qfalse);
 		if (configIndex > 0) {
-			Disp(ent, va(
-				CT_B"Mins: "CT_V"%s\n"
-				CT_B"Maxs: "CT_V"%s",
-				vtos(model_mins[configIndex]),
-				vtos(model_maxs[configIndex])));
+			Disp(ent, va(CT_B"Mins: " CT_V"%s\n" CT_B"Maxs: " CT_V"%s",	vtos(model_mins[configIndex]), vtos(model_maxs[configIndex])));
 		}
 		else {
 			fileHandle_t fh = 0;
@@ -172,17 +164,13 @@ void Cmd_Bounds_f (gentity_t *ent, int iArg) {
 				vec3_t maxs;
 				G_ReadMD3MinsMaxes(fh, mins, maxs);
 				Disp(ent, va(CT_V"%s", model));
-				Disp(ent, va(
-					CT_B"Mins: "CT_V"%s\n"
-					CT_B"Maxs: "CT_V"%s",
-					vtos(mins),
-					vtos(maxs)));
+				Disp(ent, va(CT_B"Mins: " CT_V"%s\n" CT_B"Maxs: " CT_V"%s",	vtos(mins),	vtos(maxs)));
 				trap_FS_FCloseFile(fh);
 			}
 		}
 	}
 	else {
-		Disp(ent, CT_B"Usage: \'"CT_C"bounds "CT_AO"[model name | entity number]");
+		Disp(ent, CT_B"Usage: \'" CT_C"bounds " CT_AO"[model name | entity number]");
 	}
 }
 

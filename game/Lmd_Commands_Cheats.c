@@ -199,15 +199,15 @@ void Cmd_Gravity_f (gentity_t *ent, int iArg) {
 	grav = atoi(val);
 	trap_Argv(1, arg, sizeof(arg));
 	if(arg[0] == 0) {
-		Disp(ent, CT_B"Usage: "CT_C"/gravity "CT_AR"<player> "CT_AO"[gravity]\n"CT_B"Use a player index of "CT_V"-1"CT_B" for the map gravity.");
+		Disp(ent, CT_B"Usage: " CT_C"/gravity " CT_AR"<player> " CT_AO"[gravity]\n" CT_B"Use a player index of " CT_V"-1" CT_B" for the map gravity.");
 	}
 	else if(atoi(arg) == -1) {
 		if(val[0] == 0) {
-			Disp(ent, va(CT_B"Global gravity: "CT_V"%i", g_gravity.integer));
+			Disp(ent, va(CT_B"Global gravity: " CT_V"%i", g_gravity.integer));
 		}
 		else {
 			trap_Cvar_Set("g_gravity", va("%i", grav));
-			Disp(ent, va(CT_B"Global gravity set to "CT_V"%i^3.", grav));
+			Disp(ent, va(CT_B"Global gravity set to " CT_V"%i^3.", grav));
 		}
 	}
 	else {
@@ -215,7 +215,7 @@ void Cmd_Gravity_f (gentity_t *ent, int iArg) {
 		if(!targ)
 			return;
 		if(val[0] == 0) {
-			Disp(ent, va(CT_B"Player gravity: "CT_V"%i", targ->client->Lmd.customGravity));
+			Disp(ent, va(CT_B"Player gravity: " CT_V"%i", targ->client->Lmd.customGravity));
 		}
 		else {
 			targ->client->Lmd.customGravity.value = grav;
@@ -223,7 +223,7 @@ void Cmd_Gravity_f (gentity_t *ent, int iArg) {
 				targ->client->Lmd.customGravity.time = level.time + Q3_INFINITE; //Ufo: Q3_INFINITE is insufficient for leveltime dependant stuff
 			else
 				targ->client->Lmd.customGravity.time = 0;
-			Disp(ent, va(CT_B"Player gravity set to "CT_V"%i"CT_B".", grav));
+			Disp(ent, va(CT_B"Player gravity set to " CT_V"%i" CT_B".", grav));
 		}
 	}
 }
@@ -476,15 +476,15 @@ void Cmd_Speed_f (gentity_t *ent, int iArg) {
 		speed = 0;
 	trap_Argv(1, arg, sizeof(arg));
 	if(arg[0] == 0) {
-		Disp(ent, CT_B"Usage: "CT_C"/speed "CT_AR"<player> "CT_AO"[speed]\n"CT_B"Use a player index of "CT_V"-1"CT_B" for the map speed.");
+		Disp(ent, CT_B"Usage: " CT_C"/speed " CT_AR"<player> " CT_AO"[speed]\n" CT_B"Use a player index of " CT_V"-1" CT_B" for the map speed.");
 	}
 	else if(atoi(arg) == -1) {
 		if(val[0] == 0) {
-			Disp(ent, va(CT_B"Global speed: "CT_V"%i", g_speed.integer));
+			Disp(ent, va(CT_B"Global speed: " CT_V"%i", g_speed.integer));
 		}
 		else {
 			trap_Cvar_Set("g_speed", va("%i", speed));
-			Disp(ent, va(CT_B"Global speed set to "CT_V"%i^3.", speed));
+			Disp(ent, va(CT_B"Global speed set to " CT_V"%i^3.", speed));
 		}
 	}
 	else {
@@ -492,7 +492,7 @@ void Cmd_Speed_f (gentity_t *ent, int iArg) {
 		if(!targ)
 			return;
 		if(val[0] == 0) {
-			Disp(ent, va(CT_B"Player speed: "CT_V"%i", targ->client->Lmd.customSpeed));
+			Disp(ent, va(CT_B"Player speed: " CT_V"%i", targ->client->Lmd.customSpeed));
 		}
 		else {
 			targ->client->Lmd.customSpeed.value = speed;
@@ -500,7 +500,7 @@ void Cmd_Speed_f (gentity_t *ent, int iArg) {
 				targ->client->Lmd.customSpeed.time = level.time + Q3_INFINITE; //Ufo: Q3_INFINITE is insufficient for leveltime dependant stuff
 			else
 				targ->client->Lmd.customSpeed.time = 0;
-			Disp(ent, va(CT_B"Player speed set to "CT_V"%i"CT_B".", speed));
+			Disp(ent, va(CT_B"Player speed set to " CT_V"%i" CT_B".", speed));
 		}
 	}
 }
@@ -513,12 +513,12 @@ void Cmd_HidePing_f (gentity_t *ent, int iArg) {
 	if (trap_Argc() == 1 || newPing < 1 || newPing == ent->client->pers.Lmd.fakePing)
 	{
 		ent->client->pers.Lmd.fakePing = 0;
-		Disp(ent, CT_B"Hideping: ^1OFF\n"CT_B"Specify a positive value as an argument.");
+		Disp(ent, CT_B"Hideping: ^1OFF\n" CT_B"Specify a positive value as an argument.");
 	}
 	else
 	{
 		ent->client->pers.Lmd.fakePing = newPing;
-		Disp(ent, va(CT_B"Hideping: ^2ON\n"CT_B"Your ping will from now appear to be roughly "CT_V"%i"CT_B".", newPing));
+		Disp(ent, va(CT_B"Hideping: ^2ON\n" CT_B"Your ping will from now appear to be roughly " CT_V"%i" CT_B".", newPing));
 	}
 }
 

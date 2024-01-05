@@ -393,7 +393,7 @@ qboolean Factions_ParseKey(byte *object, qboolean pre, char *key, char *value){
 			unsigned int id = 0;
 			char rankName[MAX_NAMELEN + 1];
 			//>= 1, in case we dont have a rank
-			if(sscanf((const char *)value, "%u \"%"MAX_NAMELEN_TEXT"[^\"]\"", &id, rankName) >= 1 && Accounts_GetById(id)){
+			if(sscanf((const char *)value, "%u \"%" MAX_NAMELEN_TEXT"[^\"]\"", &id, rankName) >= 1 && Accounts_GetById(id)){
 				Factions_AddPlayer(faction, rankName, id);
 			}
 			return qtrue;
@@ -402,7 +402,7 @@ qboolean Factions_ParseKey(byte *object, qboolean pre, char *key, char *value){
 			if(faction->Ranks.count < MAX_RANKS){
 				char name[MAX_NAMELEN + 1], rankTag[MAX_TAGLEN + 1];
 				unsigned int auths = 0, rankLevel = 0;
-				if(sscanf((const char *)value, "\"%"MAX_NAMELEN_TEXT"[^\"]\" \"%"MAX_RANKTAGLEN_TEXT"[^\"]\" %u %u",
+				if(sscanf((const char *)value, "\"%" MAX_NAMELEN_TEXT"[^\"]\" \"%" MAX_RANKTAGLEN_TEXT"[^\"]\" %u %u",
 					name, rankTag, &rankLevel, &auths) == 4){
 					Factions_AddRank(faction, name, rankTag, rankLevel, auths);
 				}
@@ -414,7 +414,7 @@ qboolean Factions_ParseKey(byte *object, qboolean pre, char *key, char *value){
 				unsigned int timeoutDay = 0;
 				char message[MAX_STRING_CHARS];
 				char title[MAX_NAMELEN + 1];
-				if(sscanf((const char *)value, "\"%"MAX_NAMELEN_TEXT"[^\"]\" %u \"%1023[^\"]\"", title, &timeoutDay, message) == 3){
+				if(sscanf((const char *)value, "\"%" MAX_NAMELEN_TEXT"[^\"]\" %u \"%1023[^\"]\"", title, &timeoutDay, message) == 3){
 					Factions_AddAnouncement(faction, timeoutDay, title, message);
 				}
 			}
@@ -435,7 +435,7 @@ qboolean Factions_LoadFile(char *name, char *buf){
 }
 
 unsigned int Factions_Load(void){
-	return Lmd_Data_ProcessFiles(FACTION_FOLDER, "."LMD_FACTION_EXT, Factions_LoadFile, Q3_INFINITE);
+	return Lmd_Data_ProcessFiles(FACTION_FOLDER, "." LMD_FACTION_EXT, Factions_LoadFile, Q3_INFINITE);
 }
 
 DBSaveFileCallbackReturn_t* Factions_SaveMoreKeys(byte *structure, DBSaveFileCallbackReturn_t *arg, char *key, int keySze, char *value, int valueSze){
@@ -493,7 +493,7 @@ DBSaveFileCallbackReturn_t* Factions_SaveMoreKeys(byte *structure, DBSaveFileCal
 }
 
 void Factions_SaveFaction(unsigned int index){
-	Lmd_Data_SaveDatafile(FACTION_FOLDER, va("%s."LMD_FACTION_EXT, FactionList.Factions[index]->name), FactionFields,
+	Lmd_Data_SaveDatafile(FACTION_FOLDER, va("%s." LMD_FACTION_EXT, FactionList.Factions[index]->name), FactionFields,
 		(byte *)FactionList.Factions[index], NULL, Factions_SaveMoreKeys);
 	FactionList.Factions[index]->modifyTime = 0;
 }
@@ -509,7 +509,7 @@ void Factions_Save(qboolean full){
 void Factions_List(gentity_t *ent, int playerId){
 	unsigned int i;
 	char name[MAX_STRING_CHARS], tag[MAX_STRING_CHARS], *Property;
-	Disp(ent, va("^2%-"MAX_NAMELEN_TEXT"s ^3%-"MAX_TAGLEN_TEXT"s %s\n"
+	Disp(ent, va("^2%-" MAX_NAMELEN_TEXT"s ^3%-" MAX_TAGLEN_TEXT"s %s\n"
 		"^3=====================================%s",
 		"Faction name", "Tag", (playerId==0)?"^4Property":"", (playerId==0)?"=============================":""));
 	for(i = 0;i<FactionList.count;i++){
@@ -526,7 +526,7 @@ void Factions_List(gentity_t *ent, int playerId){
 				Property = FactionList.Factions[i]->Property;
 			else
 				Property = "";
-			Disp(ent, va("^7%-"MAX_NAMELEN_TEXT"s ^3%-"MAX_TAGLEN_TEXT"s ^4%s", name, tag, Property));
+			Disp(ent, va("^7%-" MAX_NAMELEN_TEXT"s ^3%-" MAX_TAGLEN_TEXT"s ^4%s", name, tag, Property));
 		}
 	}
 	Disp(ent, va("^3=====================================%s", (playerId==0)?"=============================":""));
@@ -536,7 +536,7 @@ void Factions_ListMembers(gentity_t *ent, Faction_t *faction){
 	unsigned int i;
 	Account_t *acc;
 	char tmpName[MAX_STRING_CHARS], tmpRank[MAX_STRING_CHARS];
-	Disp(ent, va("^3%-36s ^2%-36s ^5%-"MAX_NAMELEN_TEXT"s ^1%-"MAX_RANKTAGLEN_TEXT"s\n"
+	Disp(ent, va("^3%-36s ^2%-36s ^5%-" MAX_NAMELEN_TEXT"s ^1%-" MAX_RANKTAGLEN_TEXT"s\n"
 		"^3===================================================",
 		"Player name", "Username", "Rank", "Rank tag")); //use %-s so we are all aligned properly
 	/*
@@ -554,7 +554,7 @@ void Factions_ListMembers(gentity_t *ent, Faction_t *faction){
 		Q_CleanStr(tmpName);
 		Q_strncpyz(tmpRank, faction->Players.Player[i].rankName, sizeof(tmpRank));
 		Q_CleanStr(tmpRank);
-		Disp(ent, va("^3%-36s ^2%-36s ^7%-"MAX_NAMELEN_TEXT"s ^7%-"MAX_RANKTAGLEN_TEXT"s",
+		Disp(ent, va("^3%-36s ^2%-36s ^7%-" MAX_NAMELEN_TEXT"s ^7%-" MAX_RANKTAGLEN_TEXT"s",
 			tmpName, Accounts_GetUsername(acc), tmpRank, Factions_GetRankTag(faction, faction->Players.Player[i].rankName)));
 	}
 	Disp(ent, "^3===================================================");
@@ -564,12 +564,12 @@ void Factions_ListMembers(gentity_t *ent, Faction_t *faction){
 void Factions_ListRanks(gentity_t *ent, Faction_t *faction, qboolean extraInfo){
 	unsigned int i;
 	if(extraInfo){
-		Disp(ent, va("^2%-"MAX_NAMELEN_TEXT"s ^5Rank tag ^3level  ^1Auths\n"
+		Disp(ent, va("^2%-" MAX_NAMELEN_TEXT"s ^5Rank tag ^3level  ^1Auths\n"
 			"^3=========================================",
 			"Rank name")); //use %-s so we are all aligned properly
 	}
 	else{
-		Disp(ent, va("^2%-"MAX_NAMELEN_TEXT"s ^5Rank tag\n"
+		Disp(ent, va("^2%-" MAX_NAMELEN_TEXT"s ^5Rank tag\n"
 			"^3=========================================",
 			"Rank name")); //use %s so we are all aligned properly
 	}
@@ -577,11 +577,11 @@ void Factions_ListRanks(gentity_t *ent, Faction_t *faction, qboolean extraInfo){
 		if(extraInfo){
 			char auths[MAX_STRING_CHARS];
 			Factions_RankString(faction->Ranks.Rank[i].auths, auths, sizeof(auths));
-			Disp(ent, va("^2%-"MAX_NAMELEN_TEXT"s ^5%-"MAX_RANKTAGLEN_TEXT"s      ^3%-5u %s", faction->Ranks.Rank[i].name,
+			Disp(ent, va("^2%-" MAX_NAMELEN_TEXT"s ^5%-" MAX_RANKTAGLEN_TEXT"s      ^3%-5u %s", faction->Ranks.Rank[i].name,
 				faction->Ranks.Rank[i].rankTag, faction->Ranks.Rank[i].rankLevel, auths));
 		}
 		else{
-			Disp(ent, va("^2%-"MAX_NAMELEN_TEXT"s ^5%-"MAX_RANKTAGLEN_TEXT"s", faction->Ranks.Rank[i].name,
+			Disp(ent, va("^2%-" MAX_NAMELEN_TEXT"s ^5%-" MAX_RANKTAGLEN_TEXT"s", faction->Ranks.Rank[i].name,
 				faction->Ranks.Rank[i].rankTag));
 		}
 	}
@@ -591,7 +591,7 @@ void Factions_ListAnnouncements(gentity_t *ent, Faction_t *faction){
 	unsigned int i;
 	int now = Time_Days(Time_Now());
 	char daysLeft[MAX_STRING_CHARS];
-	Disp(ent, va("^2%-"MAX_NAMELEN_TEXT"s ^3Days left\n"
+	Disp(ent, va("^2%-" MAX_NAMELEN_TEXT"s ^3Days left\n"
 		"^3=========================================",
 		"Announcements"));
 	for(i = 0;i<faction->Announcements.count;i++){
@@ -600,7 +600,7 @@ void Factions_ListAnnouncements(gentity_t *ent, Faction_t *faction){
 		else
 			Q_strncpyz(daysLeft, "Infinite", sizeof(daysLeft));
 			
-		Disp(ent, va("^2%-"MAX_NAMELEN_TEXT"s %s", faction->Announcements.Message[i].title, daysLeft));
+		Disp(ent, va("^2%-" MAX_NAMELEN_TEXT"s %s", faction->Announcements.Message[i].title, daysLeft));
 	}
 	Disp(ent, "^3=========================================");
 }

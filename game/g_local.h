@@ -71,7 +71,7 @@ extern vec3_t gPainPoint;
 #define BODY_QUEUE_SIZE		8
 
 #ifndef INFINITE
-#define INFINITE			1000000
+#define Q_INFINITE			1000000
 #endif
 
 #define	FRAMETIME			100					// msec

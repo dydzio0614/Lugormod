@@ -24,9 +24,8 @@ qboolean Confirm_Set(gentity_t *ent, void (*func)(gentity_t *ent, void *data), v
 
 	ent->client->Lmd.confirm.func = func;
 	ent->client->Lmd.confirm.data = data;
-	Disp(ent, CT_B"Confirmation command added\n"
-		CT_B"Use \'"CT_C"/confirm yes"CT_B"\' to confirm the command or \'"CT_C"/confirm no"CT_B"\' to cancel.\n"
-		CT_B"Use \'"CT_C"/confirm toggle"CT_B"\' to disable the confirmation requirement.");
+	Disp(ent, CT_B"Confirmation command added\n" CT_B"Use \'" CT_C"/confirm yes" CT_B"\' to confirm the command or \'" CT_C"/confirm no" CT_B"\' to cancel.\n"
+		CT_B"Use \'" CT_C"/confirm toggle" CT_B"\' to disable the confirmation requirement.");
 	return qtrue;
 }
 
@@ -64,7 +63,7 @@ void Cmd_Confirm_f(gentity_t *ent, int iArg) {
 		}
 	}
 	else 
-		Disp(ent, CT_B"Usage: "CT_C"/confirm "CT_AR"<\'yes\' | \'no\' | \'toggle\'>");
+		Disp(ent, CT_B"Usage: " CT_C"/confirm " CT_AR"<\'yes\' | \'no\' | \'toggle\'>");
 }
 
 /*

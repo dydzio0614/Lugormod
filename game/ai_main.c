@@ -8742,7 +8742,7 @@ void StandardBotAI(bot_state_t *bs, float thinktime)
 #endif
 	}
 	//Lugormod spinning
-	if (bs->spinDegrees && bs->spinDegrees > abs(bs->spinOffset)) {
+	if (bs->spinDegrees && bs->spinDegrees > fabsf(bs->spinOffset)) {
 		bs->goalAngles[YAW] += bs->spinOffset;
 		/*
 		if (bs->goalAngles[YAW] > 180) {

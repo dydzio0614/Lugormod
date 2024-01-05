@@ -82,7 +82,7 @@ void updatePlayer(gentity_t *ent){
 void Lmd_Accounts_LogAction(gentity_t *player, Account_t *acc, char* action) {
 	char* username = Accounts_GetUsername(acc);
 	G_LogPrintf("Player \"%s\" (%s) has %s.\n", player->client->pers.netname, username, action);
-	Auths_DispAdmins(va(CT_B"Player \'"CT_N"%s"CT_B"\' ("CT_B_V"%s"CT_B") has %s.", player->client->pers.netname, username, action));
+	Auths_DispAdmins(va(CT_B"Player \'" CT_N"%s" CT_B"\' (" CT_B_V"%s" CT_B") has %s.", player->client->pers.netname, username, action));
 }
 
 
@@ -276,7 +276,7 @@ void listAdmins(gentity_t *ent){
 			count++;
 		}
 	}
-	Disp (ent, va(CT_V"%i"CT_B" nicks.", count));
+	Disp (ent, va(CT_V"%i" CT_B" nicks.", count));
 }
 
 void clearLevels(void){
@@ -596,11 +596,11 @@ qboolean IsValidUsername(char *username, char **reason) {
 }
 
 qboolean Lmd_Accounts_Player_Register(gentity_t *ent, char *username, char *passwd){
-	char stripped[MAX_NETNAME];
-	char *failReason;
+	//char stripped[MAX_NETNAME] = {NULL};
+	char *failReason = NULL;
 	int i = 0, c = 0;
 
-	Account_t *account;
+	Account_t *account = NULL;
 
 	if(ent->client->pers.Lmd.account){
 		Disp(ent, "^3You are already registered.");

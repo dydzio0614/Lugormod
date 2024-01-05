@@ -4335,7 +4335,7 @@ gentity_t *NPC_SpawnType( gentity_t *ent, char *npc_type, char *targetname, qboo
 
 	if (!npc_type[0])
 	{
-		Com_Printf( S_COLOR_RED"ERROR: Error, expected one of:\n"S_COLOR_WHITE" NPC spawn [NPC type (from ext_data/NPCs)]\n NPC spawn vehicle [VEH type (from ext_data/vehicles)]\n" );
+		Com_Printf( S_COLOR_RED"ERROR: Error, expected one of:\n" S_COLOR_WHITE" NPC spawn [NPC type (from ext_data/NPCs)]\n NPC spawn vehicle [VEH type (from ext_data/vehicles)]\n" );
 		return NULL;
 	}
 
