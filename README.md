@@ -5,7 +5,7 @@ Credits to:
 Lugor       - for creating early versions of the mod,
 RoboPhred   - for developing the mod for many years,
 Ufo         - for small scale development and producing a linux build.
-Creator_X   - for fixing some bugs and updating the linux build.
+Creator_X   - for upgrading further.
 
 Can be compiled using Community Version of Visual Studio 2022.
 Linux users may use the makefile inside game folder.
