@@ -16,4 +16,4 @@ Pull Requests Aiming To Improve Official Public Released Version Of Lugormod May
 
 Contact: lugormod.code@gmail.com
 
-Copyright (C) 2003-2023 RoboPhred.
+Copyright (C) 2003-2024 Lugormod Team.
