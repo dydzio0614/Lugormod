@@ -7,7 +7,8 @@
 
 #define LMD_DATABASE_FILELIST_MAX 2048
 #define LMD_DATABASE_FILENAME_SIZE MAX_NETNAME
-#define LMD_DATABASE_DATAPATH "data"
+//Creator: What is this? another macro? Disabled to enable the use of the cvar lmd_DataPath for dynamic data paths.
+//#define LMD_DATABASE_DATAPATH "data"
 
 qboolean BG_ParseField( BG_field_t *l_fields, const char *key, const char *value, void *target );
 qboolean BG_ParseType(fieldtype_t type, const char *value, void *target);
@@ -33,8 +34,8 @@ extern vmCvar_t lmd_DataPath;
 char* Lmd_Data_GetDataPath(char *directory, char *output, int outputSze){
 	char *datapath = lmd_DataPath.string;
 	if(!datapath[0])
-		datapath = "default";
-	Q_strncpyz(output, va(LMD_DATABASE_DATAPATH"/%s/%s", datapath, directory), outputSze);
+		datapath = "data/default";
+	Q_strncpyz(output, va(/*LMD_DATABASE_DATAPATH*/"/%s/%s", datapath, directory), outputSze);
 	return output;
 }
 

@@ -2083,8 +2083,8 @@ qboolean BG_CanUseFPNow(int gametype, playerState_t *ps, int time, forcePowers_t
 
 	//Ufo:
 	if (ps->clientNum < MAX_CLIENTS &&
-		((power == FP_LEVITATION && level.clients[ps->clientNum].Lmd.restrict & 32) || 
-		(power == FP_SABERTHROW && (level.clients[ps->clientNum].Lmd.restrict & 2 || level.clients[ps->clientNum].pers.Lmd.persistantFlags & SPF_IONLYSABER))))
+		((power == FP_LEVITATION && level.clients[ps->clientNum].Lmd.restrict & 32) ||
+			(power == FP_SABERTHROW && (level.clients[ps->clientNum].Lmd.restrict & 2 || level.clients[ps->clientNum].pers.Lmd.persistantFlags & SPF_IONLYSABER))))
 	{
 		return qfalse;
 	}
@@ -2187,7 +2187,8 @@ BG_FindItemForAmmo
 
 ===============
 */
-gitem_t	*BG_FindItemForAmmo( ammo_t ammo ) {
+gitem_t	*BG_FindItemForAmmo(ammo_t ammo)
+{
 	gitem_t	*it;
 	
 	for ( it = bg_itemlist + 1 ; it->classname ; it++) {

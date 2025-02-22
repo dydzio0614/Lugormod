@@ -404,7 +404,7 @@ static cvarTable_t		gameCvarTable[] = {
 	{ &lmd_autobansameip, "lmd_autoBanSameIp", "0", CVAR_ARCHIVE, 0, qfalse, qfalse,
 		"If lmd_maxsameip is set, then this cvar controls whether to ban ips that go over the given limit."
 	},
-	{ &lmd_DataPath, "lmd_datapath", "default", CVAR_ARCHIVE | CVAR_LATCH, 0, qfalse, qfalse,
+	{ &lmd_DataPath, "lmd_datapath", "data/default", CVAR_ARCHIVE | CVAR_LATCH, 0, qfalse, qfalse,
 		"The data path that lugormod will use for its accounts, entity sets, and other files."
 	},
 	{ &lmd_startingcr, "lmd_startingCr", "0", CVAR_ARCHIVE, 0, qfalse, qfalse,
@@ -1668,10 +1668,12 @@ void G_InitGame( int levelTime, int randomSeed, int restart ) {
 	G_InitMemory();
 
 	//RoboPhred:
+	//Creator: Disabled this to enable dynamic path for data files. Why would anyone do so?
+	/*
 	if(!lmd_DataPath.string[0] || lmd_DataPath.string[0] == '\\' || lmd_DataPath.string[0] == '/'){
-		trap_Cvar_Set("lmd_DataPath", "default");
+		trap_Cvar_Set("lmd_DataPath", "data/default");
 	}
-
+	*/
 	InitializeSpawnTable();
 
 	G_Printf("Setting level globals...\n");

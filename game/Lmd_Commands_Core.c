@@ -188,6 +188,7 @@ qboolean Lmd_Command(gentity_t *ent, const char *cmd) {
 		DispContiguous(ent, va(CT_B"%s", found->name));
 		DispContiguous(ent, va(CT_V"%i" CT_B" commands match that command.", count));
 		DispContiguous(ent, NULL);
+		level.time;
 		return qfalse;
 	}
 
